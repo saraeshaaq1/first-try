@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Video Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+    }
+    .upload-box {
+      padding: 20px;
+      border: 2px dashed #ccc;
+      border-radius: 10px;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+    video {
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎥 Video Dashboard</h1>
+    <div class="upload-box">
+      <p>Select a video file to upload:</p>
+      <input type="file" id="videoUpload" accept="video/*">
+      <video id="videoPreview" controls hidden></video>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('videoUpload');
+    const video = document.getElementById('videoPreview');
+
+    input.addEventListener('change', function () {
+      const file = input.files[0];
+      if (file) {
+        video.src = URL.createObjectURL(file);
+        video.hidden = false;
+      }
+    });
+  </script>
+</body>
+</html>
