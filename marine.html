@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Marine Biodiversity Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #eef7f9;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .upload-box {
+      padding: 20px;
+      border: 2px dashed #4da6ff;
+      border-radius: 10px;
+      text-align: center;
+      background-color: #ffffff;
+    }
+    video {
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+    .info-section {
+      margin-top: 40px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .info-section img {
+      width: 100%;
+      margin-top: 15px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🐠 Utilization of Deep Learning for Marine Biodiversity Monitoring</h1>
+
+    <div class="upload-box">
+      <p>Select a video of marine life to analyze:</p>
+      <input type="file" id="videoUpload" accept="video/*">
+      <video id="videoPreview" controls hidden></video>
+    </div>
+
+    <div class="info-section">
+      <h2>🔍 Powered by YOLO Deep Learning Model</h2>
+      <p>This dashboard allows researchers to upload underwater video footage. The video will be sent to a YOLO-based deep learning model trained to detect and classify various species of fish and marine organisms.</p>
+      <p>Once processed, the system will generate a detailed report showing:</p>
+      <ul>
+        <li>Species detected</li>
+        <li>Count per species</li>
+        <li>Time and frame of detection</li>
+        <li>Confidence level</li>
+      </ul>
+      <p>The generated report will be available for download and can also be sent to your email.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Coral_Reef.jpg" alt="Marine Life Example">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/YOLO_Object_Detection.jpg/800px-YOLO_Object_Detection.jpg" alt="YOLO detection">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Tropical_fish_in_a_coral_reef.jpg" alt="Fish Example">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Marine_fishes.jpg" alt="Colorful Marine Fishes">
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('videoUpload');
+    const video = document.getElementById('videoPreview');
+
+    input.addEventListener('change', function () {
+      const file = input.files[0];
+      if (file) {
+        video.src = URL.createObjectURL(file);
+        video.hidden = false;
+
+        // TODO: Send video to backend API for YOLO processing
+        // fetch('/analyze', { method: 'POST', body: file })
+        // .then(response => response.json())
+        // .then(data => console.log("Detection Report:", data));
+      }
+    });
+  </script>
+</body>
+</html>
